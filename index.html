@@ -7,6 +7,7 @@
     <link rel="icon" href="https://d.top4top.io/p_3454s302g1.jpg" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* Your existing CSS variables and base styles go here */
         :root {
             --primary-color: #007bff; /* أزرق للأزرار */
             --secondary-color: #28a745; /* أخضر للمميزات */
@@ -23,7 +24,7 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            direction: rtl;
+            direction: rtl; /* Keep RTL for overall page */
             text-align: right;
             overflow-x: hidden;
         }
@@ -41,7 +42,7 @@
             padding: 15px 0;
             border-bottom: 1px solid #333;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between; /* This will push items to ends */
             align-items: center;
             position: sticky;
             top: 0;
@@ -49,15 +50,24 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
-        .header-left {
+        .header-content { /* New wrapper for header items */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%; /* Ensure it takes full width of container */
+            padding: 0 20px; /* Add some padding if needed */
+        }
+
+        .header-left-items { /* Renamed from header-left to be more descriptive */
             display: flex;
             align-items: center;
+            /* Order will be reversed due to RTL and flex-direction default, so adjust visually */
         }
 
         .app-icon {
             width: 40px;
             height: 40px;
-            margin-left: 15px;
+            margin-right: 15px; /* Change margin-left to margin-right for RTL */
             border-radius: var(--border-radius);
             object-fit: cover;
         }
@@ -76,8 +86,55 @@
             font-size: 1.8em;
             cursor: pointer;
             padding: 0 15px;
-            display: none; /* Hide by default, show on smaller screens */
+            z-index: 1001; /* Ensure button is above sidebar when open */
         }
+
+        /* Sidebar styles */
+        .sidebar {
+            height: 100%;
+            width: 0; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            right: 0; /* Position on the right */
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s; /* Smooth transition for opening/closing */
+            padding-top: 60px;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .sidebar a {
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 1.5em;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+            text-align: right; /* Align text to the right for RTL */
+        }
+
+        .sidebar a:hover {
+            color: #f1f1f1;
+            background-color: #333;
+        }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-right: 50px;
+        }
+
+        /* When the sidebar is open, push the main content to the left */
+        #main-content {
+            transition: margin-right .5s; /* Apply transition to main content */
+            margin-right: 0; /* Default position */
+        }
+
+        /* Styles for the rest of your sections (hero, features, screenshots, download, footer) */
+        /* ... (keep your existing styles for these sections) ... */
 
         /* Hero Section */
         .hero-section {
@@ -318,13 +375,14 @@
             font-size: 0.9em;
         }
 
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .app-name {
                 font-size: 1.6em;
             }
             .menu-button {
-                display: block; /* Show menu button */
+                display: block; /* Ensure menu button is always visible on smaller screens */
             }
             .hero-section h1 {
                 font-size: 2.5em;
@@ -342,6 +400,12 @@
             .download-buttons {
                 flex-direction: column;
                 align-items: center;
+            }
+            .sidebar {
+                padding-top: 15px;
+            }
+            .sidebar a {
+                font-size: 1.2em;
             }
         }
 
@@ -380,114 +444,146 @@
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <div class="header-left">
-                <img src="https://d.top4top.io/p_3454s302g1.jpg" alt="أيقونة FAN LIVE" class="app-icon">
-                <span class="app-name">FAN LIVE</span>
-            </div>
-            <button class="menu-button" aria-label="قائمة جانبية">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </header>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">الصفحة الرسمية</a>
+        <a href="#">الاتصال بنا</a>
+        <a href="#">من نحن</a>
+        <a href="#">سياسة الخصوصية</a>
+    </div>
 
-    <main>
-        <section class="hero-section">
-            <div class="container">
-                <h1>عالم المباريات بين يديك، بجودة لا مثيل لها!</h1>
-                <p>ودّع الانقطاعات والجودة المتدنية! مع FAN LIVE، انغمس في تجربة مشاهدة لا تُنسى لجميع مبارياتك المفضلة. تغطية شاملة، بث فوري، وتفاصيل لا تُفوّت.</p>
+    <div id="main-content">
+        <header>
+            <div class="header-content">
+                <div class="header-left-items">
+                    <img src="https://d.top4top.io/p_3454s302g1.jpg" alt="أيقونة FAN LIVE" class="app-icon">
+                    <span class="app-name">FAN LIVE</span>
+                </div>
+                <button class="menu-button" aria-label="قائمة جانبية" onclick="openNav()">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
-        </section>
+        </header>
 
-        <section class="features-section">
-            <div class="container">
-                <h2>لماذا FAN LIVE هو خيارك الأول؟</h2>
-                <div class="feature-grid">
-                    <div class="feature-item">
-                        <i class="fas fa-satellite-dish"></i>
-                        <h3>بث مباشر فائق الجودة</h3>
-                        <p>استمتع بالمباريات بجودة HD و Full HD، بدون تقطيع أو تأخير، لتكون دائمًا في قلب الحدث.</p>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-futbol"></i>
-                        <h3>تغطية شاملة لكل البطولات</h3>
-                        <p>من الدوريات الكبرى إلى البطولات القارية والعالمية، FAN LIVE يضمن لك مشاهدة كل لحظة حاسمة.</p>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-bolt"></i>
-                        <h3>تحديثات فورية وموثوقة</h3>
-                        <p>جدول مباريات محدّث باستمرار، إشعارات فورية بالأهداف والنتائج، لتكون على اطلاع دائم.</p>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-hand-pointer"></i>
-                        <h3>واجهة سهلة الاستخدام</h3>
-                        <p>تصميم بديهي ومريح يجعلك تجد مبارياتك المفضلة وتشاهدها بلمسة زر، بكل بساطة.</p>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-ad"></i>
-                        <h3>تجربة خالية من الإعلانات المزعجة</h3>
-                        <p>شاهد مبارياتك بتركيز كامل ودون انقطاعات، مع الحد الأدنى من الإعلانات التطفلية.</p>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-mobile-alt"></i>
-                        <h3>متوافق مع جميع أجهزتك</h3>
-                        <p>سواء كنت تستخدم هاتفك، جهازك اللوحي، أو شاشتك الذكية، FAN LIVE يمنحك أفضل تجربة مشاهدة.</p>
+        <main>
+            <section class="hero-section">
+                <div class="container">
+                    <h1>عالم المباريات بين يديك، بجودة لا مثيل لها!</h1>
+                    <p>ودّع الانقطاعات والجودة المتدنية! مع FAN LIVE، انغمس في تجربة مشاهدة لا تُنسى لجميع مبارياتك المفضلة. تغطية شاملة، بث فوري، وتفاصيل لا تُفوّت.</p>
+                </div>
+            </section>
+
+            <section class="features-section">
+                <div class="container">
+                    <h2>لماذا FAN LIVE هو خيارك الأول؟</h2>
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <i class="fas fa-satellite-dish"></i>
+                            <h3>بث مباشر فائق الجودة</h3>
+                            <p>استمتع بالمباريات بجودة HD و Full HD، بدون تقطيع أو تأخير، لتكون دائمًا في قلب الحدث.</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-futbol"></i>
+                            <h3>تغطية شاملة لكل البطولات</h3>
+                            <p>من الدوريات الكبرى إلى البطولات القارية والعالمية، FAN LIVE يضمن لك مشاهدة كل لحظة حاسمة.</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-bolt"></i>
+                            <h3>تحديثات فورية وموثوقة</h3>
+                            <p>جدول مباريات محدّث باستمرار، إشعارات فورية بالأهداف والنتائج، لتكون على اطلاع دائم.</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-hand-pointer"></i>
+                            <h3>واجهة سهلة الاستخدام</h3>
+                            <p>تصميم بديهي ومريح يجعلك تجد مبارياتك المفضلة وتشاهدها بلمسة زر، بكل بساطة.</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-ad"></i>
+                            <h3>تجربة خالية من الإعلانات المزعجة</h3>
+                            <p>شاهد مبارياتك بتركيز كامل ودون انقطاعات، مع الحد الأدنى من الإعلانات التطفلية.</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h3>متوافق مع جميع أجهزتك</h3>
+                            <p>سواء كنت تستخدم هاتفك، جهازك اللوحي، أو شاشتك الذكية، FAN LIVE يمنحك أفضل تجربة مشاهدة.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section class="screenshots-section">
-            <div class="container">
-                <h2>لمحة عن FAN LIVE - شاهد بنفسك</h2>
-                <div class="screenshot-gallery">
-                    <div class="screenshot-item">
-                        <img src="https://i.top4top.io/p_3454moviu1.jpg" alt="لقطة شاشة من التطبيق 1">
-                    </div>
-                    <div class="screenshot-item">
-                        <img src="https://b.top4top.io/p_34546jlxz1.jpg" alt="لقطة شاشة من التطبيق 2">
-                    </div>
-                    <div class="screenshot-item">
-                        <img src="https://g.top4top.io/p_345490k0w1.jpg" alt="لقطة شاشة من التطبيق 3">
-                    </div>
-                    <div class="screenshot-item">
-                        <img src="https://d.top4top.io/p_34546y4ce1.jpg" alt="لقطة شاشة من التطبيق 4">
+            <section class="screenshots-section">
+                <div class="container">
+                    <h2>لمحة عن FAN LIVE - شاهد بنفسك</h2>
+                    <div class="screenshot-gallery">
+                        <div class="screenshot-item">
+                            <img src="https://i.top4top.io/p_3454moviu1.jpg" alt="لقطة شاشة من التطبيق 1">
+                        </div>
+                        <div class="screenshot-item">
+                            <img src="https://b.top4top.io/p_34546jlxz1.jpg" alt="لقطة شاشة من التطبيق 2">
+                        </div>
+                        <div class="screenshot-item">
+                            <img src="https://g.top4top.io/p_345490k0w1.jpg" alt="لقطة شاشة من التطبيق 3">
+                        </div>
+                        <div class="screenshot-item">
+                            <img src="https://d.top4top.io/p_34546y4ce1.jpg" alt="لقطة شاشة من التطبيق 4">
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section class="download-section">
-            <div class="container">
-                <h2>ابدأ المشاهدة الآن!</h2>
-                <div class="download-buttons">
-                    <a href="https://www.mediafire.com/file/enisvldjajhb93e/FAN_LIVE.apk/file" class="download-button">
-                        <i class="fas fa-download"></i> تحميل تطبيق 
-                    </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.viva.player.egy.media" class="download-button player">
-                        <i class="fas fa-play-circle"></i> تحميل مشغل 
-                    </a>
+            <section class="download-section">
+                <div class="container">
+                    <h2>ابدأ المشاهدة الآن!</h2>
+                    <div class="download-buttons">
+                        <a href="https://www.mediafire.com/file/enisvldjajhb93e/FAN_LIVE.apk/file" class="download-button">
+                            <i class="fas fa-download"></i> تحميل تطبيق 
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.viva.player.egy.media" class="download-button player">
+                            <i class="fas fa-play-circle"></i> تحميل مشغل 
+                        </a>
+                    </div>
+                    <p style="margin-top: 30px; font-size: 1.1em; opacity: 0.8;">
+                        <i class="fas fa-info-circle" style="color: var(--primary-color);"></i>
+                        لأفضل تجربة، تأكد من تفعيل "التثبيت من مصادر غير معروفة" في إعدادات هاتفك عند تثبيت ملف APK.
+                    </p>
                 </div>
-                <p style="margin-top: 30px; font-size: 1.1em; opacity: 0.8;">
-                    <i class="fas fa-info-circle" style="color: var(--primary-color);"></i>
-                    لأفضل تجربة، تأكد من تفعيل "التثبيت من مصادر غير معروفة" في إعدادات هاتفك عند تثبيت ملف APK.
-                </p>
-            </div>
-        </section>
-    </main>
+            </section>
+        </main>
 
-    <footer>
-        <div class="container">
-            <div class="social-icons">
-                <a href="رابط_فيسبوك_هنا" target="_blank" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
-                <a href="رابط_تويتر_هنا" target="_blank" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
-                <a href="رابط_انستجرام_هنا" target="_blank" aria-label="انستجرام"><i class="fab fa-instagram"></i></a>
-                <a href="رابط_تليجرام_هنا" target="_blank" aria-label="تليجرام"><i class="fab fa-telegram-plane"></i></a>
+        <footer>
+            <div class="container">
+                <div class="social-icons">
+                    <a href="رابط_فيسبوك_هنا" target="_blank" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                    <a href="رابط_تويتر_هنا" target="_blank" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
+                    <a href="رابط_انستجرام_هنا" target="_blank" aria-label="انستجرام"><i class="fab fa-instagram"></i></a>
+                    <a href="رابط_تليجرام_هنا" target="_blank" aria-label="تليجرام"><i class="fab fa-telegram-plane"></i></a>
+                </div>
+                <p class="footer-text">جميع الحقوق محفوظة لتطبيق FAN LIVE &copy; 2025</p>
             </div>
-            <p class="footer-text">جميع الحقوق محفوظة لتطبيق FAN LIVE &copy; 2025</p>
-        </div>
-    </footer>
+        </footer>
+    </div> <script>
+        /* JavaScript for sidebar functionality */
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px"; // Width of the sidebar
+            document.getElementById("main-content").style.marginRight = "250px"; // Push content
+        }
 
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("main-content").style.marginRight= "0";
+        }
+
+        // Close sidebar if user clicks outside of it (optional but good for UX)
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('mySidebar');
+            const menuButton = document.querySelector('.menu-button');
+            const isClickInsideSidebar = sidebar.contains(event.target);
+            const isClickOnMenuButton = menuButton.contains(event.target);
+
+            if (!isClickInsideSidebar && !isClickOnMenuButton && sidebar.style.width === '250px') {
+                closeNav();
+            }
+        });
+    </script>
 </body>
 </html>
