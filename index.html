@@ -419,83 +419,6 @@
             100% { transform: scale(1); }
         }
 
-        /* FAQ Section Styles */
-        .faq-section {
-            padding: 60px 0;
-            background-color: #111;
-        }
-
-        .faq-section h2 {
-            text-align: center;
-            font-size: 2.8em;
-            margin-bottom: 50px;
-            color: var(--text-color);
-            position: relative;
-        }
-
-        .faq-section h2::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background-color: var(--primary-color);
-            margin: 15px auto 0;
-            border-radius: 2px;
-        }
-
-        .faq-item {
-            background-color: var(--card-background);
-            border-radius: var(--border-radius);
-            margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            overflow: hidden; /* For rounded corners */
-        }
-
-        .faq-question {
-            padding: 20px 30px;
-            font-size: 1.4em;
-            font-weight: 700;
-            color: var(--primary-color);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background-color 0.3s ease;
-        }
-
-        .faq-question:hover {
-            background-color: rgba(0, 123, 255, 0.1);
-        }
-
-        .faq-question i {
-            font-size: 0.8em;
-            transition: transform 0.3s ease;
-        }
-
-        .faq-answer {
-            padding: 0 30px 20px;
-            font-size: 1.1em;
-            color: #ccc;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
-        }
-
-        /* Active FAQ item */
-        .faq-item.active .faq-question {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .faq-item.active .faq-question i {
-            transform: rotate(180deg);
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 200px; /* Adjust based on content */
-            padding: 20px 30px;
-        }
-
         /* Footer */
         footer {
             background-color: #000;
@@ -536,7 +459,7 @@
             .hero-section p {
                 font-size: 1em;
             }
-            .features-section h2, .screenshots-section h2, .faq-section h2 {
+            .features-section h2, .screenshots-section h2 {
                 font-size: 2em;
             }
             .download-button {
@@ -552,16 +475,6 @@
             }
             .sidebar a {
                 font-size: 1.2em;
-            }
-            .faq-question {
-                font-size: 1.2em;
-                padding: 15px 20px;
-            }
-            .faq-answer {
-                padding: 0 20px 15px;
-            }
-            .faq-item.active .faq-answer {
-                padding: 15px 20px;
             }
         }
 
@@ -707,94 +620,80 @@
                     </p>
                 </div>
             </section>
-
             <section class="faq-section">
                 <div class="container">
-                    <h2>الأسئلة الشائعة</h2>
-                    <div class="faq-items">
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                ما هو تطبيق FAN LIVE؟
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                FAN LIVE هو تطبيق يتيح لك مشاهدة البث المباشر للمباريات بجودة عالية وبدون تقطيع، مع تغطية شاملة لمختلف البطولات.
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                هل تطبيق FAN LIVE مجاني؟
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                نعم، تطبيق FAN LIVE مجاني تمامًا للتحميل والاستخدام.
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                ما هي الأجهزة التي يدعمها FAN LIVE؟
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                التطبيق متوافق مع معظم أجهزة أندرويد، بما في ذلك الهواتف الذكية والأجهزة اللوحية والشاشات الذكية التي تعمل بنظام أندرويد.
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                هل أحتاج إلى مشغل خارجي للمباريات؟
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                نعم، للحصول على أفضل تجربة مشاهدة، نوصي بتحميل المشغل المرفق مع التطبيق.
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                كيف أقوم بتثبيت التطبيق من مصادر غير معروفة؟
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                اذهب إلى إعدادات هاتفك، ثم الأمان أو الخصوصية، وابحث عن خيار "التثبيت من مصادر غير معروفة" وقم بتفعيله.
-                            </div>
-                        </div>
+                    <h2>أسئلة شائعة</h2>
+                    <div class="faq-container">
+                        <details class="faq-item">
+                            <summary class="faq-question">هل تطبيق FAN LIVE مجاني؟</summary>
+                            <p class="faq-answer">نعم، التطبيق مجاني بالكامل. نحن نهدف إلى توفير تجربة مشاهدة ممتعة للجميع دون تكاليف.</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary class="faq-question">هل أحتاج إلى تحميل المشغل المساعد؟</summary>
+                            <p class="faq-answer">نعم، للحصول على أفضل أداء وثبات في البث، نوصي بشدة بتحميل وتثبيت المشغل المساعد المرفق. إنه مصمم للعمل بتوافق تام مع تطبيقنا.</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary class="faq-question">هل التطبيق آمن للاستخدام؟</summary>
+                            <p class="faq-answer">بالتأكيد. ملف APK الخاص بنا نظيف تماماً وتم فحصه ضد أي برمجيات خبيثة. خصوصيتك وأمان جهازك هي أولويتنا القصوى.</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary class="faq-question">لماذا أحتاج إلى تفعيل "التثبيت من مصادر غير معروفة"؟</summary>
+                            <p class="faq-answer">لأن التطبيق يتم تحميله كملف APK من خارج متجر Google Play، يتطلب نظام أندرويد هذا الإذن للسماح بتثبيته. إنه إجراء قياسي لتثبيت أي تطبيق من خارج المتجر.</p>
+                        </details>
                     </div>
                 </div>
             </section>
-        </main>
+            </main>
 
         <footer>
             <div class="container">
                 <div class="social-icons">
-                    <a href="رابط_فيسبوك_هنا" target="_blank" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
-                    <a href="رابط_تويتر_هنا" target="_blank" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
-                    <a href="رابط_انستجرام_هنا" target="_blank" aria-label="انستجرام"><i class="fab fa-instagram"></i></a>
-                    <a href="رابط_تليجرام_هنا" target="_blank" aria-label="تليجرام"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="#" target="_blank" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank" aria-label="انستجرام"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" aria-label="تليجرام"><i class="fab fa-telegram-plane"></i></a>
                 </div>
-                <p class="footer-text">جميع الحقوق محفوظة لتطبيق FAN LIVE &copy; 2025</p>
+                <p class="footer-text">جميع الحقوق محفوظة لتطبيق FAN LIVE &copy; <span id="copyright-year"></span></p>
             </div>
         </footer>
     </div> 
     
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <script>
         /**
-         * **JavaScript مُعاد كتابته ليكون أفضل**
-         * وظيفة واحدة للفتح والإغلاق عبر إضافة/حذف كلاس من الـ body
+         * وظيفة لفتح وإغلاق القائمة الجانبية
          */
         function toggleNav() {
             document.body.classList.toggle('sidebar-open');
         }
 
-        // FAQ functionality
-        document.addEventListener('DOMContentLoaded', () => {
-            const faqQuestions = document.querySelectorAll('.faq-question');
-
-            faqQuestions.forEach(question => {
-                question.addEventListener('click', () => {
-                    const faqItem = question.closest('.faq-item');
-                    faqItem.classList.toggle('active');
-                });
-            });
+        /**
+         * تهيئة سلايدر الصور
+         */
+        const swiper = new Swiper('.swiper', {
+            effect: 'coverflow', // تأثير ثلاثي الأبعاد جذاب
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            loop: true, // يجعل السلايدر يلف بشكل لا نهائي
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+            },
+            autoplay: { // تشغيل تلقائي
+                delay: 2500,
+                disableOnInteraction: false,
+            },
         });
+
+        /**
+         * تحديث سنة حقوق النشر تلقائياً
+         */
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
