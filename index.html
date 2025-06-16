@@ -7,14 +7,15 @@
     <link rel="icon" href="https://d.top4top.io/p_3454s302g1.jpg" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Your existing CSS variables and base styles go here */
         :root {
-            --primary-color: #007bff; /* أزرق للأزرار */
-            --secondary-color: #28a745; /* أخضر للمميزات */
-            --text-color: #f8f9fa; /* أبيض للنصوص */
-            --background-color: #1a1a1a; /* أسود غامق للخلفية */
-            --card-background: #2c2c2c; /* خلفية الكروت */
+            --primary-color: #007bff;
+            --secondary-color: #28a745;
+            --text-color: #f8f9fa;
+            --background-color: #1a1a1a;
+            --card-background: #2c2c2c;
             --border-radius: 10px;
+            --sidebar-width: 280px; /* عرض القائمة الجانبية */
+            --animation-speed: 0.4s; /* سرعة الحركة */
         }
 
         body {
@@ -35,7 +36,7 @@
             margin: 0 auto;
             padding: 20px 0;
         }
-
+        
         /* Header - التعديل الاحترافي */
         header {
             background-color: rgba(10, 10, 10, 0.85); /* خلفية شبه شفافة */
@@ -105,50 +106,103 @@
             border-color: rgba(255, 255, 255, 0.2);
         }
 
-        /* Sidebar styles */
-        .sidebar {
-            height: 100%;
-            width: 0;
+
+        /* --- تحسينات القائمة الجانبية --- */
+
+        /* الطبقة الخلفية (Overlay) */
+        .overlay {
             position: fixed;
-            z-index: 1000;
             top: 0;
-            right: 0;
-            background-color: #111;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            visibility: hidden; /* إخفاء تام لتجنب أي تفاعل */
+            z-index: 1001; /* فوق المحتوى وأسفل القائمة */
+            transition: opacity var(--animation-speed) ease-in-out, visibility 0s var(--animation-speed);
         }
 
+        /* القائمة الجانبية */
+        .sidebar {
+            height: 100%;
+            width: var(--sidebar-width);
+            position: fixed;
+            z-index: 1002; /* أعلى طبقة في الصفحة */
+            top: 0;
+            right: 0;
+            background-color: #1c1c1c;
+            overflow-x: hidden;
+            padding-top: 60px;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
+            transform: translateX(var(--sidebar-width)); /* تبدأ خارج الشاشة من اليمين */
+            transition: transform var(--animation-speed) ease-in-out;
+        }
+        
         .sidebar a {
-            padding: 15px 25px;
+            padding: 15px 35px 15px 25px;
             text-decoration: none;
-            font-size: 1.5em;
-            color: #818181;
+            font-size: 1.4em;
+            color: #ccc;
             display: block;
-            transition: 0.3s;
-            text-align: right;
+            transition: color 0.3s, background-color 0.3s, opacity 0.3s, transform 0.3s;
+            opacity: 0; /* تبدأ مخفية لتأثير الظهور المتتالي */
+            transform: translateY(15px);
         }
 
         .sidebar a:hover {
-            color: #f1f1f1;
-            background-color: #333;
+            color: #fff;
+            background-color: rgba(0, 123, 255, 0.1);
         }
 
         .sidebar .closebtn {
             position: absolute;
-            top: 0;
-            left: 25px; /* تم تغيير الموقع ليتناسب مع فتح القائمة من اليمين */
-            font-size: 36px;
-            margin-left: 50px; /* تم تغيير الهامش */
+            top: 10px;
+            left: 25px;
+            font-size: 2.5em;
+            padding: 0;
+        }
+        .sidebar .closebtn:hover {
+            background-color: transparent !important;
+            color: var(--primary-color);
         }
 
-        /* When the sidebar is open, push the main content to the left */
+
+        /* المحتوى الرئيسي */
         #main-content {
-            transition: margin-right .5s;
-            margin-right: 0;
+            transition: transform var(--animation-speed) ease-in-out, filter var(--animation-speed) ease-in-out;
+        }
+
+        /* --- حالة فتح القائمة --- */
+        /* يتم إضافة هذا الكلاس للـ body عبر JavaScript */
+        body.sidebar-open .overlay {
+            opacity: 1;
+            visibility: visible;
+            transition-delay: 0s;
+        }
+
+        body.sidebar-open .sidebar {
+            transform: translateX(0); /* إعادة القائمة إلى مكانها الطبيعي */
+        }
+
+        body.sidebar-open #main-content {
+            transform: translateX(calc(-1 * var(--sidebar-width))); /* دفع المحتوى لليسار */
+            filter: brightness(0.5); /* تعتيم المحتوى */
         }
         
+        /* تأثير الظهور المتتالي لروابط القائمة */
+        body.sidebar-open .sidebar a {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        body.sidebar-open .sidebar a:nth-of-type(1) { transition-delay: 0.15s; }
+        body.sidebar-open .sidebar a:nth-of-type(2) { transition-delay: 0.2s; }
+        body.sidebar-open .sidebar a:nth-of-type(3) { transition-delay: 0.25s; }
+        body.sidebar-open .sidebar a:nth-of-type(4) { transition-delay: 0.3s; }
+        body.sidebar-open .sidebar a:nth-of-type(5) { transition-delay: 0.35s; }
+
+
         /* ... (باقي كود الـ CSS لم يتغير) ... */
 
         /* Hero Section */
@@ -459,8 +513,10 @@
 </head>
 <body>
 
+    <div class="overlay" onclick="toggleNav()"></div>
+
     <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&times;</a>
         <a href="#">الصفحة الرسمية</a>
         <a href="#">الاتصال بنا</a>
         <a href="#">من نحن</a>
@@ -470,7 +526,7 @@
     <div id="main-content">
         <header>
             <div class="header-container">
-                <button class="menu-button" aria-label="قائمة جانبية" onclick="openNav()">
+                <button class="menu-button" aria-label="قائمة جانبية" onclick="toggleNav()">
                     <i class="fas fa-bars"></i>
                 </button>
                 
@@ -580,29 +636,13 @@
     </div> 
     
     <script>
-        /* JavaScript for sidebar functionality */
-        function openNav() {
-            document.getElementById("mySidebar").style.width = "250px"; // Width of the sidebar
-            document.getElementById("main-content").style.marginRight = "250px"; // Push content
+        /**
+         * **JavaScript مُعاد كتابته ليكون أفضل**
+         * وظيفة واحدة للفتح والإغلاق عبر إضافة/حذف كلاس من الـ body
+         */
+        function toggleNav() {
+            document.body.classList.toggle('sidebar-open');
         }
-
-        function closeNav() {
-            document.getElementById("mySidebar").style.width = "0";
-            document.getElementById("main-content").style.marginRight= "0";
-        }
-
-        // Close sidebar if user clicks outside of it (optional but good for UX)
-        document.addEventListener('click', function(event) {
-            const sidebar = document.getElementById('mySidebar');
-            const menuButton = document.querySelector('.menu-button');
-            const isClickInsideSidebar = sidebar.contains(event.target);
-            const isClickOnMenuButton = menuButton.contains(event.target);
-
-            // Ensure sidebar is open before trying to close it
-            if (!isClickInsideSidebar && !isClickOnMenuButton && document.getElementById("mySidebar").style.width === '250px') {
-                closeNav();
-            }
-        });
     </script>
 </body>
 </html>
