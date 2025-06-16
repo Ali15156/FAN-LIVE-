@@ -3,25 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>تحميل FAN LIVE - مبارياتك في متناول يدك</title>
-    
-    <meta name="description" content="شاهد جميع مبارياتك المفضلة بجودة عالية وبدون تقطيع مع تطبيق FAN LIVE. تغطية شاملة للدوريات والبطولات العالمية. قم بالتحميل الآن!">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="#"> <meta property="og:title" content="تحميل FAN LIVE - مبارياتك في متناول يدك">
-    <meta property="og:description" content="شاهد جميع مبارياتك بجودة عالية مع تطبيق FAN LIVE.">
-    <meta property="og:image" content="https://d.top4top.io/p_3454s302g1.jpg">
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="#"> <meta property="twitter:title" content="تحميل FAN LIVE - مبارياتك في متناول يدك">
-    <meta property="twitter:description" content="شاهد جميع مبارياتك بجودة عالية مع تطبيق FAN LIVE.">
-    <meta property="twitter:image" content="https://d.top4top.io/p_3454s302g1.jpg">
     <link rel="icon" href="https://d.top4top.io/p_3454s302g1.jpg" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
     <style>
         :root {
             --primary-color: #007bff;
@@ -30,8 +14,8 @@
             --background-color: #1a1a1a;
             --card-background: #2c2c2c;
             --border-radius: 10px;
-            --sidebar-width: 280px;
-            --animation-speed: 0.4s;
+            --sidebar-width: 280px; /* عرض القائمة الجانبية */
+            --animation-speed: 0.4s; /* سرعة الحركة */
         }
 
         body {
@@ -53,10 +37,10 @@
             padding: 20px 0;
         }
         
-        /* ... (كود الهيدر والقائمة الجانبية والمحتوى الرئيسي كما هو) ... */
-         header {
-            background-color: rgba(10, 10, 10, 0.85);
-            backdrop-filter: blur(10px);
+        /* Header - التعديل الاحترافي */
+        header {
+            background-color: rgba(10, 10, 10, 0.85); /* خلفية شبه شفافة */
+            backdrop-filter: blur(10px); /* تأثير ضبابي للخلفية */
             padding: 10px 0;
             border-bottom: 1px solid #333;
             position: sticky;
@@ -65,7 +49,7 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
 
-        .header-container {
+        .header-container { /* حاوية جديدة لتوسيط المحتوى */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -74,10 +58,10 @@
             margin: 0 auto;
         }
 
-        .logo-container {
+        .logo-container { /* حاوية للشعار والاسم */
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 12px; /* مسافة بين الأيقونة والاسم */
             cursor: pointer;
         }
 
@@ -91,17 +75,17 @@
         }
 
         .logo-container:hover .app-icon {
-             transform: scale(1.1);
+             transform: scale(1.1); /* تكبير الأيقونة عند المرور */
         }
 
         .app-name {
-            font-size: 1.8em;
+            font-size: 1.8em; /* حجم مناسب للاسم */
             font-weight: 700;
-            color: var(--text-color);
+            color: var(--text-color); /* لون أبيض للنص */
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
         }
 
-        .app-name .live-part {
+        .app-name .live-part { /* جزء من الاسم بلون مختلف */
             color: var(--primary-color);
         }
 
@@ -111,16 +95,21 @@
             color: var(--text-color);
             font-size: 1.8em;
             cursor: pointer;
-            padding: 8px;
+            padding: 8px; /* مساحة قابلة للضغط */
             z-index: 1001;
             border-radius: 8px;
             transition: background-color 0.3s, border-color 0.3s;
         }
 
         .menu-button:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.1); /* تغيير الخلفية عند المرور */
             border-color: rgba(255, 255, 255, 0.2);
         }
+
+
+        /* --- تحسينات القائمة الجانبية --- */
+
+        /* الطبقة الخلفية (Overlay) */
         .overlay {
             position: fixed;
             top: 0;
@@ -129,23 +118,24 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.7);
             opacity: 0;
-            visibility: hidden;
-            z-index: 1001;
+            visibility: hidden; /* إخفاء تام لتجنب أي تفاعل */
+            z-index: 1001; /* فوق المحتوى وأسفل القائمة */
             transition: opacity var(--animation-speed) ease-in-out, visibility 0s var(--animation-speed);
         }
 
+        /* القائمة الجانبية */
         .sidebar {
             height: 100%;
             width: var(--sidebar-width);
             position: fixed;
-            z-index: 1002;
+            z-index: 1002; /* أعلى طبقة في الصفحة */
             top: 0;
             right: 0;
             background-color: #1c1c1c;
             overflow-x: hidden;
             padding-top: 60px;
             box-shadow: -5px 0 25px rgba(0, 0, 0, 0.5);
-            transform: translateX(var(--sidebar-width));
+            transform: translateX(var(--sidebar-width)); /* تبدأ خارج الشاشة من اليمين */
             transition: transform var(--animation-speed) ease-in-out;
         }
         
@@ -156,7 +146,7 @@
             color: #ccc;
             display: block;
             transition: color 0.3s, background-color 0.3s, opacity 0.3s, transform 0.3s;
-            opacity: 0;
+            opacity: 0; /* تبدأ مخفية لتأثير الظهور المتتالي */
             transform: translateY(15px);
         }
 
@@ -176,10 +166,15 @@
             background-color: transparent !important;
             color: var(--primary-color);
         }
+
+
+        /* المحتوى الرئيسي */
         #main-content {
             transition: transform var(--animation-speed) ease-in-out, filter var(--animation-speed) ease-in-out;
         }
 
+        /* --- حالة فتح القائمة --- */
+        /* يتم إضافة هذا الكلاس للـ body عبر JavaScript */
         body.sidebar-open .overlay {
             opacity: 1;
             visibility: visible;
@@ -187,14 +182,15 @@
         }
 
         body.sidebar-open .sidebar {
-            transform: translateX(0);
+            transform: translateX(0); /* إعادة القائمة إلى مكانها الطبيعي */
         }
 
         body.sidebar-open #main-content {
-            transform: translateX(calc(-1 * var(--sidebar-width)));
-            filter: brightness(0.5);
+            transform: translateX(calc(-1 * var(--sidebar-width))); /* دفع المحتوى لليسار */
+            filter: brightness(0.5); /* تعتيم المحتوى */
         }
         
+        /* تأثير الظهور المتتالي لروابط القائمة */
         body.sidebar-open .sidebar a {
             opacity: 1;
             transform: translateY(0);
@@ -206,9 +202,36 @@
         body.sidebar-open .sidebar a:nth-of-type(4) { transition-delay: 0.3s; }
         body.sidebar-open .sidebar a:nth-of-type(5) { transition-delay: 0.35s; }
 
+
+        /* ... (باقي كود الـ CSS لم يتغير) ... */
+
+        /* Hero Section */
         .hero-section {
             text-align: center;
             padding: 80px 0 60px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('رابط_صورة_خلفية_البطل_هنا') no-repeat center center/cover;
+            color: var(--text-color);
+            position: relative;
+            overflow: hidden;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            right: -50px;
+            bottom: -50px;
+            background: radial-gradient(circle at center, rgba(0, 255, 255, 0.1), transparent 70%);
+            animation: pulse 10s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.05); opacity: 0.2; }
+            100% { transform: scale(1); opacity: 0.1; }
         }
 
         .hero-section h1 {
@@ -225,34 +248,30 @@
             line-height: 1.8;
             opacity: 0.9;
         }
+
+        /* Features Section */
         .features-section {
             padding: 60px 0;
             background-color: var(--background-color);
         }
 
-        .features-section h2, .screenshots-section h2, .faq-section h2 {
+        .features-section h2 {
             text-align: center;
             font-size: 2.8em;
             margin-bottom: 50px;
+            color: var(--secondary-color);
             position: relative;
         }
 
-        .features-section h2 { color: var(--secondary-color); }
-        .screenshots-section h2 { color: var(--primary-color); }
-        .faq-section h2 { color: var(--secondary-color); }
-
-
-        .features-section h2::after, .screenshots-section h2::after, .faq-section h2::after {
+        .features-section h2::after {
             content: '';
             display: block;
             width: 80px;
             height: 4px;
+            background-color: var(--primary-color);
             margin: 15px auto 0;
             border-radius: 2px;
         }
-
-        .features-section h2::after, .faq-section h2::after { background-color: var(--primary-color); }
-        .screenshots-section h2::after { background-color: var(--secondary-color); }
 
         .feature-grid {
             display: grid;
@@ -287,54 +306,82 @@
             color: var(--secondary-color);
         }
 
-        .feature-item p { font-size: 1.1em; color: #ccc; }
+        .feature-item p {
+            font-size: 1.1em;
+            color: #ccc;
+        }
 
-        /* --- Screenshots Slider Styles --- */
+        /* Screenshots Section */
         .screenshots-section {
             padding: 60px 0;
             background-color: #111;
         }
 
-        .swiper {
-            width: 100%;
-            padding-top: 50px;
-            padding-bottom: 50px;
+        .screenshots-section h2 {
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            position: relative;
         }
-
-        .swiper-slide {
-            background-position: center;
-            background-size: cover;
-            width: 280px; /* عرض الصورة */
-            height: auto;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: 2px solid #333;
-        }
-
-        .swiper-slide img {
+        .screenshots-section h2::after {
+            content: '';
             display: block;
-            width: 100%;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
         }
-        
-        /* ... (Download section and other styles remain the same) ... */
 
+        .screenshot-gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .screenshot-item {
+            background-color: var(--card-background);
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            width: 280px; /* Adjust as needed */
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot-item:hover {
+            transform: scale(1.03);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: var(--border-radius);
+        }
+
+        /* Download Section */
         .download-section {
             text-align: center;
             padding: 80px 0;
             background-color: var(--background-color);
         }
+
         .download-section h2 {
             font-size: 3em;
             margin-bottom: 40px;
             color: var(--text-color);
         }
+
         .download-buttons {
             display: flex;
             justify-content: center;
             gap: 30px;
             flex-wrap: wrap;
         }
+
         .download-button {
             display: inline-block;
             background-color: var(--primary-color);
@@ -346,68 +393,108 @@
             font-weight: bold;
             transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
+            animation: bounceIn 1s ease-out;
         }
+
         .download-button:hover {
             background-color: #0056b3;
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 12px 30px rgba(0, 123, 255, 0.6);
         }
+
         .download-button.player {
             background-color: var(--secondary-color);
             box-shadow: 0 8px 20px rgba(40, 167, 69, 0.4);
         }
+
         .download-button.player:hover {
             background-color: #218838;
             box-shadow: 0 12px 30px rgba(40, 167, 69, 0.6);
         }
-        
-        /* --- FAQ Section Styles --- */
+
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+
+        /* FAQ Section Styles */
         .faq-section {
             padding: 60px 0;
-            background-color: var(--background-color);
+            background-color: #111;
         }
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+
+        .faq-section h2 {
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 50px;
+            color: var(--text-color);
+            position: relative;
         }
+
+        .faq-section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
         .faq-item {
             background-color: var(--card-background);
             border-radius: var(--border-radius);
-            border: 1px solid #444;
-            transition: background-color 0.3s;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            overflow: hidden; /* For rounded corners */
         }
-        .faq-item[open] {
-            background-color: #3a3a3a;
-        }
+
         .faq-question {
-            padding: 20px;
-            font-size: 1.3em;
+            padding: 20px 30px;
+            font-size: 1.4em;
             font-weight: 700;
+            color: var(--primary-color);
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: var(--text-color);
+            transition: background-color 0.3s ease;
         }
-        .faq-question::after { /* The arrow icon */
-            content: '\f078';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
+
+        .faq-question:hover {
+            background-color: rgba(0, 123, 255, 0.1);
+        }
+
+        .faq-question i {
+            font-size: 0.8em;
             transition: transform 0.3s ease;
         }
-        .faq-item[open] .faq-question::after {
-            transform: rotate(180deg);
-        }
+
         .faq-answer {
-            padding: 0 20px 20px 20px;
+            padding: 0 30px 20px;
             font-size: 1.1em;
             color: #ccc;
-            line-height: 1.7;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
         }
-        summary::-webkit-details-marker { display: none; } /* Hide default marker in Chrome */
+
+        /* Active FAQ item */
+        .faq-item.active .faq-question {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px; /* Adjust based on content */
+            padding: 20px 30px;
+        }
 
         /* Footer */
         footer {
@@ -417,29 +504,99 @@
             text-align: center;
             border-top: 1px solid #333;
         }
+
         .social-icons a {
             color: var(--text-color);
             font-size: 1.8em;
             margin: 0 15px;
             transition: color 0.3s ease;
         }
-        .social-icons a:hover { color: var(--primary-color); }
-        .footer-text { margin-top: 20px; font-size: 0.9em; }
-        
-        /* ... (Responsive styles remain the same) ... */
-        @media (max-width: 768px) {
-            .app-name { font-size: 1.6em; }
-            .hero-section h1 { font-size: 2.5em; }
-            .hero-section p { font-size: 1em; }
-            .features-section h2, .screenshots-section h2, .faq-section h2 { font-size: 2em; }
-            .download-button { font-size: 1.4em; padding: 15px 30px; }
-            .download-buttons { flex-direction: column; align-items: center; }
-            .sidebar a { font-size: 1.2em; }
-            .faq-question { font-size: 1.1em; }
-            .faq-answer { font-size: 1em; }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
         }
 
+        .footer-text {
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .app-name {
+                font-size: 1.6em;
+            }
+            .menu-button {
+                display: block; /* Ensure menu button is always visible on smaller screens */
+            }
+            .hero-section h1 {
+                font-size: 2.5em;
+            }
+            .hero-section p {
+                font-size: 1em;
+            }
+            .features-section h2, .screenshots-section h2, .faq-section h2 {
+                font-size: 2em;
+            }
+            .download-button {
+                font-size: 1.4em;
+                padding: 15px 30px;
+            }
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .sidebar {
+                padding-top: 15px;
+            }
+            .sidebar a {
+                font-size: 1.2em;
+            }
+            .faq-question {
+                font-size: 1.2em;
+                padding: 15px 20px;
+            }
+            .faq-answer {
+                padding: 0 20px 15px;
+            }
+            .faq-item.active .faq-answer {
+                padding: 15px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .app-icon {
+                width: 40px;
+                height: 40px;
+            }
+            .app-name {
+                font-size: 1.4em;
+            }
+            .hero-section {
+                padding: 50px 0 30px;
+            }
+            .hero-section h1 {
+                font-size: 2em;
+            }
+            .hero-section p {
+                font-size: 0.9em;
+            }
+            .feature-item {
+                padding: 20px;
+            }
+            .feature-item h3 {
+                font-size: 1.5em;
+            }
+            .feature-item i {
+                font-size: 3em;
+            }
+            .download-section h2 {
+                font-size: 2.2em;
+            }
+        }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
@@ -455,10 +612,11 @@
 
     <div id="main-content">
         <header>
-             <div class="header-container">
+            <div class="header-container">
                 <button class="menu-button" aria-label="قائمة جانبية" onclick="toggleNav()">
                     <i class="fas fa-bars"></i>
                 </button>
+                
                 <div class="logo-container">
                     <span class="app-name">FAN <span class="live-part">LIVE</span></span>
                     <img src="https://d.top4top.io/p_3454s302g1.jpg" alt="أيقونة FAN LIVE" class="app-icon">
@@ -478,12 +636,36 @@
                 <div class="container">
                     <h2>لماذا FAN LIVE هو خيارك الأول؟</h2>
                     <div class="feature-grid">
-                         <div class="feature-item"><i class="fas fa-satellite-dish"></i><h3>بث مباشر فائق الجودة</h3><p>استمتع بالمباريات بجودة HD و Full HD، بدون تقطيع أو تأخير، لتكون دائمًا في قلب الحدث.</p></div>
-                        <div class="feature-item"><i class="fas fa-futbol"></i><h3>تغطية شاملة لكل البطولات</h3><p>من الدوريات الكبرى إلى البطولات القارية والعالمية، FAN LIVE يضمن لك مشاهدة كل لحظة حاسمة.</p></div>
-                        <div class="feature-item"><i class="fas fa-bolt"></i><h3>تحديثات فورية وموثوقة</h3><p>جدول مباريات محدّث باستمرار، إشعارات فورية بالأهداف والنتائج، لتكون على اطلاع دائم.</p></div>
-                        <div class="feature-item"><i class="fas fa-hand-pointer"></i><h3>واجهة سهلة الاستخدام</h3><p>تصميم بديهي ومريح يجعلك تجد مبارياتك المفضلة وتشاهدها بلمسة زر، بكل بساطة.</p></div>
-                        <div class="feature-item"><i class="fas fa-ad"></i><h3>تجربة خالية من الإعلانات المزعجة</h3><p>شاهد مبارياتك بتركيز كامل ودون انقطاعات، مع الحد الأدنى من الإعلانات التطفلية.</p></div>
-                        <div class="feature-item"><i class="fas fa-mobile-alt"></i><h3>متوافق مع جميع أجهزتك</h3><p>سواء كنت تستخدم هاتفك، جهازك اللوحي، أو شاشتك الذكية، FAN LIVE يمنحك أفضل تجربة مشاهدة.</p></div>
+                        <div class="feature-item">
+                            <i class="fas fa-satellite-dish"></i>
+                            <h3>بث مباشر فائق الجودة</h3>
+                            <p>استمتع بالمباريات بجودة HD و Full HD، بدون تقطيع أو تأخير، لتكون دائمًا في قلب الحدث.</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-futbol"></i>
+                            <h3>تغطية شاملة لكل البطولات</h3>
+                            <p>من الدوريات الكبرى إلى البطولات القارية والعالمية، FAN LIVE يضمن لك مشاهدة كل لحظة حاسمة.</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-bolt"></i>
+                            <h3>تحديثات فورية وموثوقة</h3>
+                            <p>جدول مباريات محدّث باستمرار، إشعارات فورية بالأهداف والنتائج، لتكون على اطلاع دائم.</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-hand-pointer"></i>
+                            <h3>واجهة سهلة الاستخدام</h3>
+                            <p>تصميم بديهي ومريح يجعلك تجد مبارياتك المفضلة وتشاهدها بلمسة زر، بكل بساطة.</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-ad"></i>
+                            <h3>تجربة خالية من الإعلانات المزعجة</h3>
+                            <p>شاهد مبارياتك بتركيز كامل ودون انقطاعات، مع الحد الأدنى من الإعلانات التطفلية.</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h3>متوافق مع جميع أجهزتك</h3>
+                            <p>سواء كنت تستخدم هاتفك، جهازك اللوحي، أو شاشتك الذكية، FAN LIVE يمنحك أفضل تجربة مشاهدة.</p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -491,13 +673,18 @@
             <section class="screenshots-section">
                 <div class="container">
                     <h2>لمحة عن FAN LIVE - شاهد بنفسك</h2>
-                    <div class="swiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img src="https://i.top4top.io/p_3454moviu1.jpg" alt="لقطة شاشة 1" loading="lazy"></div>
-                            <div class="swiper-slide"><img src="https://b.top4top.io/p_34546jlxz1.jpg" alt="لقطة شاشة 2" loading="lazy"></div>
-                            <div class="swiper-slide"><img src="https://g.top4top.io/p_345490k0w1.jpg" alt="لقطة شاشة 3" loading="lazy"></div>
-                            <div class="swiper-slide"><img src="https://d.top4top.io/p_34546y4ce1.jpg" alt="لقطة شاشة 4" loading="lazy"></div>
-                            <div class="swiper-slide"><img src="https://i.top4top.io/p_3454moviu1.jpg" alt="لقطة شاشة 5" loading="lazy"></div>
+                    <div class="screenshot-gallery">
+                        <div class="screenshot-item">
+                            <img src="https://i.top4top.io/p_3454moviu1.jpg" alt="لقطة شاشة من التطبيق 1">
+                        </div>
+                        <div class="screenshot-item">
+                            <img src="https://b.top4top.io/p_34546jlxz1.jpg" alt="لقطة شاشة من التطبيق 2">
+                        </div>
+                        <div class="screenshot-item">
+                            <img src="https://g.top4top.io/p_345490k0w1.jpg" alt="لقطة شاشة من التطبيق 3">
+                        </div>
+                        <div class="screenshot-item">
+                            <img src="https://d.top4top.io/p_34546y4ce1.jpg" alt="لقطة شاشة من التطبيق 4">
                         </div>
                     </div>
                 </div>
@@ -507,87 +694,107 @@
                 <div class="container">
                     <h2>ابدأ المشاهدة الآن!</h2>
                     <div class="download-buttons">
-                        <a href="https://www.mediafire.com/file/enisvldjajhb93e/FAN_LIVE.apk/file" class="download-button"><i class="fas fa-download"></i> تحميل تطبيق</a>
-                        <a href="https://play.google.com/store/apps/details?id=com.viva.player.egy.media" class="download-button player"><i class="fas fa-play-circle"></i> تحميل مشغل</a>
+                        <a href="https://www.mediafire.com/file/enisvldjajhb93e/FAN_LIVE.apk/file" class="download-button">
+                            <i class="fas fa-download"></i> تحميل تطبيق 
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.viva.player.egy.media" class="download-button player">
+                            <i class="fas fa-play-circle"></i> تحميل مشغل 
+                        </a>
                     </div>
-                    <p style="margin-top: 30px; font-size: 1.1em; opacity: 0.8;"><i class="fas fa-info-circle" style="color: var(--primary-color);"></i> لأفضل تجربة، تأكد من تفعيل "التثبيت من مصادر غير معروفة" في إعدادات هاتفك.</p>
+                    <p style="margin-top: 30px; font-size: 1.1em; opacity: 0.8;">
+                        <i class="fas fa-info-circle" style="color: var(--primary-color);"></i>
+                        لأفضل تجربة، تأكد من تفعيل "التثبيت من مصادر غير معروفة" في إعدادات هاتفك عند تثبيت ملف APK.
+                    </p>
                 </div>
             </section>
 
             <section class="faq-section">
                 <div class="container">
-                    <h2>أسئلة شائعة</h2>
-                    <div class="faq-container">
-                        <details class="faq-item">
-                            <summary class="faq-question">هل تطبيق FAN LIVE مجاني؟</summary>
-                            <p class="faq-answer">نعم، التطبيق مجاني بالكامل. نحن نهدف إلى توفير تجربة مشاهدة ممتعة للجميع دون تكاليف.</p>
-                        </details>
-                        <details class="faq-item">
-                            <summary class="faq-question">هل أحتاج إلى تحميل المشغل المساعد؟</summary>
-                            <p class="faq-answer">نعم، للحصول على أفضل أداء وثبات في البث، نوصي بشدة بتحميل وتثبيت المشغل المساعد المرفق. إنه مصمم للعمل بتوافق تام مع تطبيقنا.</p>
-                        </details>
-                        <details class="faq-item">
-                            <summary class="faq-question">هل التطبيق آمن للاستخدام؟</summary>
-                            <p class="faq-answer">بالتأكيد. ملف APK الخاص بنا نظيف تماماً وتم فحصه ضد أي برمجيات خبيثة. خصوصيتك وأمان جهازك هي أولويتنا القصوى.</p>
-                        </details>
-                        <details class="faq-item">
-                            <summary class="faq-question">لماذا أحتاج إلى تفعيل "التثبيت من مصادر غير معروفة"؟</summary>
-                            <p class="faq-answer">لأن التطبيق يتم تحميله كملف APK من خارج متجر Google Play، يتطلب نظام أندرويد هذا الإذن للسماح بتثبيته. إنه إجراء قياسي لتثبيت أي تطبيق من خارج المتجر.</p>
-                        </details>
+                    <h2>الأسئلة الشائعة</h2>
+                    <div class="faq-items">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                ما هو تطبيق FAN LIVE؟
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                FAN LIVE هو تطبيق يتيح لك مشاهدة البث المباشر للمباريات بجودة عالية وبدون تقطيع، مع تغطية شاملة لمختلف البطولات.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                هل تطبيق FAN LIVE مجاني؟
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                نعم، تطبيق FAN LIVE مجاني تمامًا للتحميل والاستخدام.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                ما هي الأجهزة التي يدعمها FAN LIVE؟
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                التطبيق متوافق مع معظم أجهزة أندرويد، بما في ذلك الهواتف الذكية والأجهزة اللوحية والشاشات الذكية التي تعمل بنظام أندرويد.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                هل أحتاج إلى مشغل خارجي للمباريات؟
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                نعم، للحصول على أفضل تجربة مشاهدة، نوصي بتحميل المشغل المرفق مع التطبيق.
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                كيف أقوم بتثبيت التطبيق من مصادر غير معروفة؟
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                اذهب إلى إعدادات هاتفك، ثم الأمان أو الخصوصية، وابحث عن خيار "التثبيت من مصادر غير معروفة" وقم بتفعيله.
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
-            </main>
+        </main>
 
         <footer>
             <div class="container">
                 <div class="social-icons">
-                    <a href="#" target="_blank" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" target="_blank" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
-                    <a href="#" target="_blank" aria-label="انستجرام"><i class="fab fa-instagram"></i></a>
-                    <a href="#" target="_blank" aria-label="تليجرام"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="رابط_فيسبوك_هنا" target="_blank" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                    <a href="رابط_تويتر_هنا" target="_blank" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
+                    <a href="رابط_انستجرام_هنا" target="_blank" aria-label="انستجرام"><i class="fab fa-instagram"></i></a>
+                    <a href="رابط_تليجرام_هنا" target="_blank" aria-label="تليجرام"><i class="fab fa-telegram-plane"></i></a>
                 </div>
-                <p class="footer-text">جميع الحقوق محفوظة لتطبيق FAN LIVE &copy; <span id="copyright-year"></span></p>
+                <p class="footer-text">جميع الحقوق محفوظة لتطبيق FAN LIVE &copy; 2025</p>
             </div>
         </footer>
     </div> 
     
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
     <script>
         /**
-         * وظيفة لفتح وإغلاق القائمة الجانبية
+         * **JavaScript مُعاد كتابته ليكون أفضل**
+         * وظيفة واحدة للفتح والإغلاق عبر إضافة/حذف كلاس من الـ body
          */
         function toggleNav() {
             document.body.classList.toggle('sidebar-open');
         }
 
-        /**
-         * تهيئة سلايدر الصور
-         */
-        const swiper = new Swiper('.swiper', {
-            effect: 'coverflow', // تأثير ثلاثي الأبعاد جذاب
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: 'auto',
-            loop: true, // يجعل السلايدر يلف بشكل لا نهائي
-            coverflowEffect: {
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
-            },
-            autoplay: { // تشغيل تلقائي
-                delay: 2500,
-                disableOnInteraction: false,
-            },
-        });
+        // FAQ functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqQuestions = document.querySelectorAll('.faq-question');
 
-        /**
-         * تحديث سنة حقوق النشر تلقائياً
-         */
-        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const faqItem = question.closest('.faq-item');
+                    faqItem.classList.toggle('active');
+                });
+            });
+        });
     </script>
 </body>
 </html>
